@@ -35,6 +35,11 @@
           "Variable": "$.event",
           "StringEquals": "N2ContextEstablished",
           "Next": "CM-CONNECTED"
+        },
+        {
+          "Variable": "$.event",
+          "StringEquals": "RegistrationUpdateReject",
+          "Next": "RM-DEREGISTERED"
         }
       ],
       "Default": "CM-IDLE"
