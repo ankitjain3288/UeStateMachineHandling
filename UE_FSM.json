@@ -1,0 +1,65 @@
+{
+  "Comment": "UE Registration and Connection Management State Machine",
+  "StartAt": "RM-DEREGISTERED",
+  "States": {
+    "RM-DEREGISTERED": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.event",
+          "StringEquals": "RegistrationAccept",
+          "Next": "RM-REGISTERED"
+        },
+        {
+          "Variable": "$.event",
+          "StringEquals": "RegistrationReject",
+          "Next": "RM-DEREGISTERED"
+        }
+      ],
+      "Default": "RM-DEREGISTERED"
+    },
+    "RM-REGISTERED": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.event",
+          "StringEquals": "Deregistration",
+          "Next": "RM-DEREGISTERED"
+        },
+        {
+          "Variable": "$.event",
+          "StringEquals": "RegistrationUpdateAccept",
+          "Next": "RM-REGISTERED"
+        },
+        {
+          "Variable": "$.event",
+          "StringEquals": "N2ContextEstablished",
+          "Next": "CM-CONNECTED"
+        }
+      ],
+      "Default": "CM-IDLE"
+    },
+    "CM-IDLE": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.event",
+          "StringEquals": "N2ContextEstablished",
+          "Next": "CM-CONNECTED"
+        }
+      ],
+      "Default": "CM-IDLE"
+    },
+    "CM-CONNECTED": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.event",
+          "StringEquals": "N2ContextReleased",
+          "Next": "CM-IDLE"
+        }
+      ],
+      "Default": "CM-CONNECTED"
+    }
+  }
+}
