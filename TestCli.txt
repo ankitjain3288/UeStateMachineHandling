@@ -1,0 +1,10 @@
+aws stepfunctions start-execution \
+    --state-machine-arn arn:aws:states:<AWS_REGION>:<AWS_ACCOUNT_ID>:stateMachine:UEStateMachine \
+    --input '{ "event": "RegistrationAccept" }'
+
+
+
+aws stepfunctions start-execution \
+    --state-machine-arn arn:aws:states:<AWS_REGION>:<AWS_ACCOUNT_ID>:stateMachine:UEStateMachine \
+    --input '{ "event": "N2ContextEstablished" }'
+
