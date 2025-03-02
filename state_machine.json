@@ -36,6 +36,11 @@
           "StringEquals": "CONNECTION_REQUEST",
           "Next": "CONNECTING"
         },
+        {
+          "Variable": "$.event",
+          "StringEquals": "UPDATE_REGISTER_REQUEST",
+          "Next": "REGISTERING"
+        },
       ],
       "Default": "REGISTERED"
     },
