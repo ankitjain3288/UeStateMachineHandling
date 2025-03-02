@@ -22,6 +22,10 @@ In the RM-REGISTERED state,
 
    
 
+
+
+   
+
 The Registration Management is used to register or deregister a UE/user with the network, and establish the user context in the network. The Connection Management is used to establish and release the signalling connection between the UE and the AMF.
 
 registration update:
