@@ -1,6 +1,5 @@
 
-
-
-
-
-
+aws stepfunctions create-state-machine \
+    --name UEStateMachine \
+    --role-arn arn:aws:iam::<AWS_ACCOUNT_ID>:role/LambdaExecutionRole \
+    --definition file://ue_fsm.json
