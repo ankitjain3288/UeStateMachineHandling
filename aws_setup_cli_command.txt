@@ -1,34 +1,6 @@
-aws dynamodb create-table --table-name UEStateTable --attribute-definitions AttributeName=UE_ID,AttributeType=S --key-schema\ AttributeName=UE_ID,KeyType=HASH
 
 
-aws events put-rule --name "UEEventRule" --event-pattern '{"source": ["5GCore"],
-        "detail-type": [
-            "RegisterRequest", 
-            "SessionEstablishment", 
-            "InactivityDetected", 
-            "PagingResponse", 
-            "DeregistrationRequest"
-        ]
-    }'
 
-zip update_state.zip update_state.py
-
-aws lambda create-function --function-name UpdateUEState --runtime python3.8  --handler update_state.lambda_handler --zip-file\ fileb://update_state.zip
-
-
-zip send_event.zip send_event.py
-
-aws lambda create-function --function-name SendUEEvent --runtime python3.8 --handler send_event.lambda_handler \
-    --zip-file send_event.zip
-
-aws stepfunctions create-state-machine --name UEStateMachine --definition ue_fsm.json
-
-aws events put-targets --rule "UEEventRule" --targets "Id"="1","Arn"="arn:aws:states:stateMachine:UEStateMachine"
-
-aws lambda invoke --function-name SendUEEvent --payload '{"ue_id": "1234", "eventType": "RegisterRequest"}' response.json
-
-
-aws dynamodb get-item --table-name UEStateTable --key '{"UE_ID": {"S": "1234"}}'
 
 
 
