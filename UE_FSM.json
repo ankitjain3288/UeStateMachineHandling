@@ -7,6 +7,11 @@
       "Choices": [
         {
           "Variable": "$.event",
+          "StringEquals": "HandlerRegisterRequest",
+          "Next": "REGISTERING"
+        },
+        {
+          "Variable": "$.event",
           "StringEquals": "RegistrationAccept",
           "Next": "RM-REGISTERED"
         },
@@ -30,7 +35,7 @@
         {
           "Variable": "$.event",
           "StringEquals": "RegistrationUpdateAccept",
-          "Next": "RM-REGISTERED"
+          "Next": "CM-CONNECTED"
         },
         {
           "Variable": "$.event",
@@ -72,6 +77,11 @@
         {
           "Variable": "$.event",
           "StringEquals": "RegistrationEvents",
+          "Next": "RM-REGISTERED"
+        },
+        {
+          "Variable": "$.event",
+          "StringEquals": "DeRegistrationEvents",
           "Next": "RM-REGISTERED"
         }
       ],
