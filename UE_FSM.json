@@ -53,7 +53,7 @@
           "Next": "RM-DEREGISTERED"
         }
       ],
-      "Default": "CM-CONNECTED"
+      "Default": "RM-REGISTERED"
     },
     "CM-IDLE": {
       "Type": "Choice",
