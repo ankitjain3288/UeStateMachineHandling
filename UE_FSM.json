@@ -15,6 +15,7 @@
           "StringEquals": "RegistrationReject",
           "Next": "RM-DEREGISTERED"
         }
+        
       ],
       "Default": "RM-DEREGISTERED"
     },
@@ -40,9 +41,14 @@
           "Variable": "$.event",
           "StringEquals": "RegistrationUpdateReject",
           "Next": "RM-DEREGISTERED"
+        },
+        {
+          "Variable": "$.event",
+          "StringEquals": "ImplicitDeregistration",
+          "Next": "RM-DEREGISTERED"
         }
       ],
-      "Default": "CM-IDLE"
+      "Default": "CM-CONNECTED"
     },
     "CM-IDLE": {
       "Type": "Choice",
@@ -62,6 +68,11 @@
           "Variable": "$.event",
           "StringEquals": "N2ContextReleased",
           "Next": "CM-IDLE"
+        },
+        {
+          "Variable": "$.event",
+          "StringEquals": "RegistrationEvents",
+          "Next": "RM-REGISTERED"
         }
       ],
       "Default": "CM-CONNECTED"
