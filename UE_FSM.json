@@ -7,11 +7,6 @@
       "Choices": [
         {
           "Variable": "$.event",
-          "StringEquals": "HandlerRegisterRequest",
-          "Next": "REGISTERING"
-        },
-        {
-          "Variable": "$.event",
           "StringEquals": "RegistrationAccept",
           "Next": "RM-REGISTERED"
         },
