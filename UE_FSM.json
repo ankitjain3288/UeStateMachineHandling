@@ -77,7 +77,7 @@
         {
           "Variable": "$.event",
           "StringEquals": "DeRegistrationEvents",
-          "Next": "RM-REGISTERED"
+          "Next": "RM-DEREGISTERED"
         }
       ],
       "Default": "CM-CONNECTED"
